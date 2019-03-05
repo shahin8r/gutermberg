@@ -4,7 +4,7 @@ import './editor.scss'
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 
-registerBlockType( 'cgb/block-gutermberg', {
+registerBlockType( 'gutermberg/block-gutermberg', {
 	title: __( 'gutermberg' ),
 	icon: 'shield',
 	category: 'common',

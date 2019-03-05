@@ -5,7 +5,7 @@
  * Enqueue CSS/JS of all the blocks.
  *
  * @since   1.0.0
- * @package CGB
+ * @package gutermberg
  */
 
 // Exit if accessed directly.
@@ -19,7 +19,7 @@ if ( ! defined( 'ABSPATH' ) ) {
  * @uses {wp-editor} for WP editor styles.
  * @since 1.0.0
  */
-function gutermberg_cgb_block_assets() {
+function gutermberg_block_assets() {
 	// Styles.
 	wp_enqueue_style(
 		'gutermberg-cgb-style-css',
@@ -29,7 +29,7 @@ function gutermberg_cgb_block_assets() {
 	);
 }
 
-add_action( 'enqueue_block_assets', 'gutermberg_cgb_block_assets' );
+add_action( 'enqueue_block_assets', 'gutermberg_block_assets' );
 
 /**
  * Enqueue Gutenberg block assets for backend editor.
@@ -40,7 +40,7 @@ add_action( 'enqueue_block_assets', 'gutermberg_cgb_block_assets' );
  * @uses {wp-editor} for WP editor styles.
  * @since 1.0.0
  */
-function gutermberg_cgb_editor_assets() {
+function gutermberg_editor_assets() {
 	wp_enqueue_script(
 		'gutermberg-cgb-block-js',
 		plugins_url( '/dist/blocks.build.js', dirname( __FILE__ ) ),
@@ -58,4 +58,4 @@ function gutermberg_cgb_editor_assets() {
 	);
 }
 
-add_action( 'enqueue_block_editor_assets', 'gutermberg_cgb_editor_assets' );
+add_action( 'enqueue_block_editor_assets', 'gutermberg_editor_assets' );
