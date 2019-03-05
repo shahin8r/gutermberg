@@ -14,9 +14,9 @@ registerBlockType( 'cgb/block-gutermberg', {
 		__( 'code' ),
 	],
 
-	edit: function( props ) {
+	edit: ( { className } ) => {
 		return (
-			<div className={ props.className }>
+			<div className={ className }>
 				<p>— Hello from the backend.</p>
 				<p>
 					CGB BLOCK: <code>gutermberg</code> is a new Gutenberg block
@@ -33,7 +33,7 @@ registerBlockType( 'cgb/block-gutermberg', {
 		)
 	},
 
-	save: function( props ) {
+	save: () => {
 		return (
 			<div>
 				<p>— Hello from the frontend.</p>
