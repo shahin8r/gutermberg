@@ -9,5 +9,8 @@
   },
   "dependencies": {
     "cgb-scripts": "1.15.0"
+  },
+  "devDependencies": {
+    "styled-components": "^4.1.3"
   }
 }
