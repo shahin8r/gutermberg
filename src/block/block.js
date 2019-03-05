@@ -1,8 +1,8 @@
-import './style.scss';
-import './editor.scss';
+import './style.scss'
+import './editor.scss'
 
-const { __ } = wp.i18n;
-const { registerBlockType } = wp.blocks;
+const { __ } = wp.i18n
+const { registerBlockType } = wp.blocks
 
 registerBlockType( 'cgb/block-gutermberg', {
 	title: __( 'gutermberg' ),
@@ -30,7 +30,7 @@ registerBlockType( 'cgb/block-gutermberg', {
 					</code>.
 				</p>
 			</div>
-		);
+		)
 	},
 
 	save: function( props ) {
@@ -49,6 +49,6 @@ registerBlockType( 'cgb/block-gutermberg', {
 					</code>.
 				</p>
 			</div>
-		);
+		)
 	},
-} );
+} )

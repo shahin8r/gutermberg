@@ -1,1 +1,1 @@
-import './block/block.js';
+import './block/block.js'

@@ -170,7 +170,7 @@
 		"react/no-children-prop": "off",
 		"react/no-find-dom-node": "warn",
 		"react/prop-types": "off",
-		"semi": "error",
+		"semi": "off",
 		"semi-spacing": "error",
 		"space-before-blocks": ["error", "always"],
 		"space-before-function-paren": ["error", "never"],
