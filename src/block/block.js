@@ -1,5 +1,6 @@
 import './style.scss'
 import './editor.scss'
+import Terminal from '../components/Terminal'
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
@@ -16,39 +17,13 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 
 	edit: ( { className } ) => {
 		return (
-			<div className={ className }>
-				<p>— Hello from the backend.</p>
-				<p>
-					CGB BLOCK: <code>gutermberg</code> is a new Gutenberg block
-				</p>
-				<p>
-					It was created via{ ' ' }
-					<code>
-						<a href="https://github.com/ahmadawais/create-guten-block">
-							create-guten-block
-						</a>
-					</code>.
-				</p>
-			</div>
+			<Terminal className={ className } />
 		)
 	},
 
 	save: () => {
 		return (
-			<div>
-				<p>— Hello from the frontend.</p>
-				<p>
-					CGB BLOCK: <code>gutermberg</code> is a new Gutenberg block.
-				</p>
-				<p>
-					It was created via{ ' ' }
-					<code>
-						<a href="https://github.com/ahmadawais/create-guten-block">
-							create-guten-block
-						</a>
-					</code>.
-				</p>
-			</div>
+			<Terminal />
 		)
 	},
 } )
