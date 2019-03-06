@@ -6,7 +6,7 @@ const Code = ( { style, language, children } ) => {
 		<SyntaxHighlighter
 			language={ language }
 			showLineNumbers={ false }
-      style={ style }
+			style={ style }
 		>
 			{ children }
 		</SyntaxHighlighter>
