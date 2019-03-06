@@ -4,8 +4,7 @@ import Terminal from '../components/Terminal'
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 const { Fragment } = wp.element
-const { InspectorControls } = wp.editor
-const { PanelBody, TextareaControl, TextControl } = wp.components
+const { BaseControl, SelectControl, TextareaControl, TextControl } = wp.components
 
 registerBlockType( 'gutermberg/block-gutermberg', {
 	title: __( 'gutermberg' ),
@@ -22,42 +21,58 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 		__( 'code' ),
 	],
 
-	edit: ( { setAttributes, attributes } ) => {
+	edit: ( { setAttributes, attributes, isSelected } ) => {
 		const updateTitle = ( value ) => setAttributes( { title: value } )
 		const updateCode = ( value ) => setAttributes( { content: value } )
 
-		return (
+		const viewMode = <Terminal>{ attributes.content ? attributes.content : '' }</Terminal>
+		const editMode = (
 			<Fragment>
-				<InspectorControls>
-					<PanelBody title="Language">
-						<select>
-							<option>PHP</option>
-						</select>
-					</PanelBody>
-					<PanelBody title="Title">
-						<TextControl
-							help="Enter your title (e.g a filename)"
-							value={ attributes.value }
-							onChange={ updateTitle }
-						/>
-					</PanelBody>
-					<PanelBody title="Code">
-						<TextareaControl
-							help="Enter your code"
-							value={ attributes.content }
-							onChange={ updateCode }
-						/>
-					</PanelBody>
-				</InspectorControls>
+				<BaseControl
+					id="gutermberg-language"
+					label="Select language"
+				>
+					<SelectControl
+						id="gutermberg-language"
+						options={ [
+							{ label: 'PHP', value: 'php' },
+						] }
+					/>
+				</BaseControl>
 
-				<Terminal>
-					{ attributes.content ? attributes.content : '' }
-				</Terminal>
+				<BaseControl
+					id="gutermberg-title"
+					label="Enter your title (e.g a filename)"
+				>
+					<TextControl
+						id="gutermberg-title"
+						value={ attributes.value }
+						onChange={ updateTitle }
+					/>
+				</BaseControl>
+
+				<BaseControl
+					id="gutermberg-code"
+					label="Enter your code"
+				>
+					<TextareaControl
+						id="gutermberg-code"
+						value={ attributes.content }
+						onChange={ updateCode }
+					/>
+				</BaseControl>
+
 			</Fragment>
 		)
+
+		return isSelected ? editMode : viewMode
 	},
 
-	save: () => {
-		return null
+	save: ( { attributes } ) => {
+		return (
+			<Terminal>
+				{ attributes.content ? attributes.content : '' }
+			</Terminal>
+		)
 	},
 } )
