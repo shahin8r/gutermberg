@@ -5,9 +5,8 @@ const Code = ( { style, language, children } ) => {
 	return (
 		<SyntaxHighlighter
 			language={ language }
-			showLineNumbers={ true }
-			style={ style }
-			className="code"
+			showLineNumbers={ false }
+      style={ style }
 		>
 			{ children }
 		</SyntaxHighlighter>
