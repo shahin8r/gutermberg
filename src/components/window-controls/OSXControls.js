@@ -1,6 +1,6 @@
 const OSXControls = () => {
 	return (
-		<div style={{ marginBottom: '1rem' }}>
+		<div>
 			<svg xmlns="http://www.w3.org/2000/svg" width="54" height="14" viewBox="0 0 54 14">
 				<g fill="none" fillRule="evenodd" transform="translate(1 1)">
 					<circle cx="6" cy="6" r="6" fill="#FF5F56" stroke="#E0443E" strokeWidth=".5"></circle>

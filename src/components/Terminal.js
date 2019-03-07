@@ -2,17 +2,20 @@ import OSXControls from './window-controls/OSXControls'
 import Code from './Code'
 import { tomorrowNight } from 'react-syntax-highlighter/dist/styles/hljs'
 
-const Wrapper = {
+const wrapperStyle = {
+	display: 'inline-block',
+	maxWidth: '100%',
+	width: '800px',
 	background: tomorrowNight.hljs.background,
 	borderRadius: '4px',
 	margin: '1rem 0',
-	maxWidth: '100%',
-	padding: '10px',
+	padding: '5px 10px 10px 10px',
+	lineHeight: '100%',
 }
 
 const Terminal = ( { children } ) => {
 	return (
-		<div style={Wrapper}>
+		<div style={ wrapperStyle }>
 			<OSXControls />
 			<Code
 				style={ tomorrowNight }

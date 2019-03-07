@@ -1,10 +1,15 @@
 
 import Terminal from '../components/Terminal'
+import Ace from 'react-ace'
+
+import 'brace/mode/php'
+import 'brace/theme/tomorrow_night'
 
 const { __ } = wp.i18n
 const { registerBlockType } = wp.blocks
 const { Fragment } = wp.element
-const { BaseControl, SelectControl, TextareaControl, TextControl } = wp.components
+const { PanelBody, SelectControl, TextControl } = wp.components
+const { InspectorControls } = wp.editor
 
 registerBlockType( 'gutermberg/block-gutermberg', {
 	title: __( 'gutermberg' ),
@@ -25,42 +30,42 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 		const updateTitle = ( value ) => setAttributes( { title: value } )
 		const updateCode = ( value ) => setAttributes( { content: value } )
 
-		const viewMode = <Terminal>{ attributes.content ? attributes.content : '' }</Terminal>
+		const viewMode = (
+			<Terminal>
+				{ attributes.content ? attributes.content : '' }
+			</Terminal>
+		)
+
 		const editMode = (
 			<Fragment>
-				<BaseControl
-					id="gutermberg-language"
-					label="Select language"
-				>
-					<SelectControl
-						id="gutermberg-language"
-						options={ [
-							{ label: 'PHP', value: 'php' },
-						] }
-					/>
-				</BaseControl>
 
-				<BaseControl
-					id="gutermberg-title"
-					label="Enter your title (e.g a filename)"
-				>
-					<TextControl
-						id="gutermberg-title"
-						value={ attributes.value }
-						onChange={ updateTitle }
-					/>
-				</BaseControl>
+				<InspectorControls>
+					<PanelBody title="Select language">
+						<SelectControl
+							id="gutermberg-language"
+							options={ [
+								{ label: 'PHP', value: 'php' },
+							] }
+						/>
+					</PanelBody>
 
-				<BaseControl
-					id="gutermberg-code"
-					label="Enter your code"
-				>
-					<TextareaControl
-						id="gutermberg-code"
-						value={ attributes.content }
-						onChange={ updateCode }
-					/>
-				</BaseControl>
+					<PanelBody title="Enter your title (e.g a filename)">
+						<TextControl
+							id="gutermberg-title"
+							value={ attributes.value }
+							onChange={ updateTitle }
+						/>
+					</PanelBody>
+				</InspectorControls>
+
+				<Ace
+					mode="php"
+					theme="tomorrow_night"
+					value={ attributes.content }
+					onChange={ updateCode }
+					fontSize={ 14 }
+					width="100%"
+				/>
 
 			</Fragment>
 		)
