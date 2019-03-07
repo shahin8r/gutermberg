@@ -12,8 +12,8 @@ const { PanelBody, SelectControl, TextControl } = wp.components
 const { InspectorControls } = wp.editor
 
 registerBlockType( 'gutermberg/block-gutermberg', {
-	title: __( 'gutermberg' ),
-	icon: 'shield',
+	title: __( 'Gutermberg' ),
+	icon: 'editor-code',
 	category: 'common',
 	attributes: {
 		content: {
