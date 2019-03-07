@@ -11,6 +11,7 @@
     "cgb-scripts": "1.15.0"
   },
   "devDependencies": {
+    "react-ace": "^6.4.0",
     "react-syntax-highlighter": "^10.1.3"
   }
 }
