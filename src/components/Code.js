@@ -1,8 +1,8 @@
-
 import SyntaxHighlighter from 'react-syntax-highlighter'
 
 const Code = ( { style, language, children } ) => {
 	style.hljs.margin = 0
+	style.hljs.padding = '0.5rem 0'
 
 	return (
 		<SyntaxHighlighter

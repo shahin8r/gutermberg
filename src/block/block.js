@@ -32,7 +32,10 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 		const updateLanguage = ( language ) => setAttributes( { language: language } )
 
 		const viewMode = (
-			<Terminal language={ attributes.language || 'php' }>
+			<Terminal
+				language={ attributes.language || 'php' }
+				title={ attributes.title }
+			>
 				{ attributes.content ? attributes.content : '' }
 			</Terminal>
 		)
@@ -41,6 +44,14 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 			<Fragment>
 
 				<InspectorControls>
+					<PanelBody title="Enter your title (e.g a filename)">
+						<TextControl
+							id="gutermberg-title"
+							value={ attributes.title }
+							onChange={ updateTitle }
+						/>
+					</PanelBody>
+
 					<PanelBody title="Select language">
 						<SelectControl
 							id="gutermberg-language"
@@ -50,17 +61,9 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 								{ label: 'JavaScript', value: 'javascript' },
 								{ label: 'Bash', value: 'bash' },
 								{ label: 'CSS', value: 'css' },
-								{ label: 'Dockerfile', value: 'dockerfile' }
+								{ label: 'Dockerfile', value: 'dockerfile' },
 							] }
 							onChange={ updateLanguage }
-						/>
-					</PanelBody>
-
-					<PanelBody title="Enter your title (e.g a filename)">
-						<TextControl
-							id="gutermberg-title"
-							value={ attributes.value }
-							onChange={ updateTitle }
 						/>
 					</PanelBody>
 				</InspectorControls>
@@ -82,7 +85,10 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 
 	save: ( { attributes } ) => {
 		return (
-			<Terminal language={ attributes.language }>
+			<Terminal
+				language={ attributes.language || 'php' }
+				title={ attributes.title }
+			>
 				{ attributes.content ? attributes.content : '' }
 			</Terminal>
 		)
