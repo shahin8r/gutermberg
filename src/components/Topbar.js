@@ -1,5 +1,6 @@
 const topbarStyle = {
 	display: 'flex',
+	padding: '5px 10px',
 	position: 'relative',
 	lineHeight: '1.5rem',
 	color: '#aaa',
