@@ -2,14 +2,14 @@
 import Terminal from '../components/Terminal'
 import Ace from 'react-ace'
 
+import { registerBlockType } from '@wordpress/blocks'
+import { Fragment } from '@wordpress/element'
+import { PanelBody, SelectControl, TextControl } from '@wordpress/components'
+import { InspectorControls } from '@wordpress/editor'
+import { __ } from '@wordpress/i18n'
+
 import 'brace/mode/php'
 import 'brace/theme/tomorrow_night'
-
-const { __ } = wp.i18n
-const { registerBlockType } = wp.blocks
-const { Fragment } = wp.element
-const { PanelBody, SelectControl, TextControl } = wp.components
-const { InspectorControls } = wp.editor
 
 registerBlockType( 'gutermberg/block-gutermberg', {
 	title: __( 'Gutermberg' ),
