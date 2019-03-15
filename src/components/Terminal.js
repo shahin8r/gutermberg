@@ -13,13 +13,13 @@ const wrapperStyle = {
 	lineHeight: '100%',
 }
 
-const Terminal = ( { children } ) => {
+const Terminal = ( { language, children } ) => {
 	return (
 		<div style={ wrapperStyle }>
 			<OSXControls />
 			<Code
 				style={ tomorrowNight }
-				language="php"
+				language={ language }
 			>
 				{ children }
 			</Code>

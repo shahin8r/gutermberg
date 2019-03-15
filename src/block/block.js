@@ -27,11 +27,12 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 	],
 
 	edit: ( { setAttributes, attributes, isSelected } ) => {
-		const updateTitle = ( value ) => setAttributes( { title: value } )
-		const updateCode = ( value ) => setAttributes( { content: value } )
+		const updateTitle = ( title ) => setAttributes( { title: title } )
+		const updateCode = ( code ) => setAttributes( { content: code } )
+		const updateLanguage = ( language ) => setAttributes( { language: language } )
 
 		const viewMode = (
-			<Terminal>
+			<Terminal language={ attributes.language || 'php' }>
 				{ attributes.content ? attributes.content : '' }
 			</Terminal>
 		)
@@ -43,9 +44,15 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 					<PanelBody title="Select language">
 						<SelectControl
 							id="gutermberg-language"
+							value={ attributes.language || 'php' }
 							options={ [
 								{ label: 'PHP', value: 'php' },
+								{ label: 'JavaScript', value: 'javascript' },
+								{ label: 'Bash', value: 'bash' },
+								{ label: 'CSS', value: 'css' },
+								{ label: 'Dockerfile', value: 'dockerfile' }
 							] }
+							onChange={ updateLanguage }
 						/>
 					</PanelBody>
 
@@ -59,7 +66,7 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 				</InspectorControls>
 
 				<Ace
-					mode="php"
+					mode={ attributes.language || 'php' }
 					theme="tomorrow_night"
 					value={ attributes.content }
 					onChange={ updateCode }
@@ -75,7 +82,7 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 
 	save: ( { attributes } ) => {
 		return (
-			<Terminal>
+			<Terminal language={ attributes.language }>
 				{ attributes.content ? attributes.content : '' }
 			</Terminal>
 		)
