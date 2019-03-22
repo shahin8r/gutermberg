@@ -6,7 +6,7 @@ import { tomorrowNight } from 'react-syntax-highlighter/dist/styles/hljs'
 const wrapperStyle = {
 	display: 'inline-block',
 	overflow: 'hidden',
-	fontFamily: 'Consolas, Monaco, monospace',
+	fontFamily: 'monospace',
 	maxWidth: '100%',
 	width: '800px',
 	background: tomorrowNight.hljs.background,
@@ -16,7 +16,7 @@ const wrapperStyle = {
 	lineHeight: '1.5rem',
 }
 
-const Terminal = ( { language, title, children } ) => {
+const Terminal = ( { language, title, showLineNumbers, children } ) => {
 	return (
 		<div style={ wrapperStyle }>
 			<Topbar title={ title }>
@@ -25,6 +25,7 @@ const Terminal = ( { language, title, children } ) => {
 			<Code
 				style={ tomorrowNight }
 				language={ language }
+				showLineNumbers={ showLineNumbers }
 			>
 				{ children }
 			</Code>

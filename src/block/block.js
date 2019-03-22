@@ -4,7 +4,7 @@ import Ace from 'react-ace'
 
 import { registerBlockType } from '@wordpress/blocks'
 import { Fragment } from '@wordpress/element'
-import { PanelBody, SelectControl, TextControl } from '@wordpress/components'
+import { PanelBody, SelectControl, TextControl, CheckboxControl } from '@wordpress/components'
 import { InspectorControls } from '@wordpress/editor'
 import { __ } from '@wordpress/i18n'
 
@@ -30,9 +30,11 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 		const updateTitle = ( title ) => setAttributes( { title: title } )
 		const updateCode = ( code ) => setAttributes( { content: code } )
 		const updateLanguage = ( language ) => setAttributes( { language: language } )
+		const updateShowLineNumbers = ( showLineNumbers ) => setAttributes( { showLineNumbers: showLineNumbers } )
 
 		const viewMode = (
 			<Terminal
+				showLineNumbers={ attributes.showLineNumbers || false }
 				language={ attributes.language || 'php' }
 				title={ attributes.title }
 			>
@@ -66,6 +68,14 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 							onChange={ updateLanguage }
 						/>
 					</PanelBody>
+
+					<PanelBody>
+						<CheckboxControl
+							label="Show line numbers"
+							checked={ attributes.showLineNumbers || false }
+							onChange={ updateShowLineNumbers }
+						/>
+					</PanelBody>
 				</InspectorControls>
 
 				<Ace
@@ -86,6 +96,7 @@ registerBlockType( 'gutermberg/block-gutermberg', {
 	save: ( { attributes } ) => {
 		return (
 			<Terminal
+				showLineNumbers={ attributes.showLineNumbers || false }
 				language={ attributes.language || 'php' }
 				title={ attributes.title }
 			>
